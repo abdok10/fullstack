@@ -50,13 +50,13 @@ const Login = () => {
             <form onSubmit={submitForm}>
                 {/* Email Address */}
                 <div>
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email" className={'dark:text-gray-200'}>Email</Label>
 
                     <Input
                         id="email"
                         type="email"
                         value={email}
-                        className="block mt-1 w-full"
+                        className="block mt-1 w-full dark:bg-slate-800 px-2 py-1"
                         onChange={event => setEmail(event.target.value)}
                         required
                         autoFocus
@@ -67,13 +67,13 @@ const Login = () => {
 
                 {/* Password */}
                 <div className="mt-4">
-                    <Label htmlFor="password">Password</Label>
+                    <Label htmlFor="password" className={'dark:text-gray-200'}>Password</Label>
 
                     <Input
                         id="password"
                         type="password"
                         value={password}
-                        className="block mt-1 w-full"
+                        className="block mt-1 w-full dark:bg-slate-800 px-2 py-1"
                         onChange={event => setPassword(event.target.value)}
                         required
                         autoComplete="current-password"
@@ -100,7 +100,7 @@ const Login = () => {
                             }
                         />
 
-                        <span className="ml-2 text-sm text-gray-600">
+                        <span className="ml-2 text-sm text-gray-600 dark:text-gray-200">
                             Remember me
                         </span>
                     </label>
@@ -109,7 +109,7 @@ const Login = () => {
                 <div className="flex items-center justify-end mt-4">
                     <Link
                         href="/forgot-password"
-                        className="underline text-sm text-gray-600 hover:text-gray-900">
+                        className="underline text-sm text-gray-600 dark:text-gray-200 hover:text-gray-900">
                         Forgot your password?
                     </Link>
 

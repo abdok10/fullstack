@@ -36,13 +36,13 @@ const Page = () => {
         <form onSubmit={submitForm}>
             {/* Name */}
             <div>
-                <Label htmlFor="name">Name</Label>
+                <Label className="dark:text-gray-200" htmlFor="name">Name</Label>
 
                 <Input
                     id="name"
                     type="text"
                     value={name}
-                    className="block mt-1 w-full"
+                    className="block mt-1 w-full dark:bg-slate-800 px-2 py-1"
                     onChange={event => setName(event.target.value)}
                     required
                     autoFocus
@@ -53,13 +53,13 @@ const Page = () => {
 
             {/* Email Address */}
             <div className="mt-4">
-                <Label htmlFor="email">Email</Label>
+                <Label className="dark:text-gray-200" htmlFor="email">Email</Label>
 
                 <Input
                     id="email"
                     type="email"
                     value={email}
-                    className="block mt-1 w-full"
+                    className="block mt-1 w-full dark:bg-slate-800 px-2 py-1"
                     onChange={event => setEmail(event.target.value)}
                     required
                 />
@@ -69,13 +69,13 @@ const Page = () => {
 
             {/* Password */}
             <div className="mt-4">
-                <Label htmlFor="password">Password</Label>
+                <Label className="dark:text-gray-200" htmlFor="password">Password</Label>
 
                 <Input
                     id="password"
                     type="password"
                     value={password}
-                    className="block mt-1 w-full"
+                   className="block mt-1 w-full dark:bg-slate-800 px-2 py-1"
                     onChange={event => setPassword(event.target.value)}
                     required
                     autoComplete="new-password"
@@ -86,7 +86,7 @@ const Page = () => {
 
             {/* Confirm Password */}
             <div className="mt-4">
-                <Label htmlFor="passwordConfirmation">
+                <Label className="dark:text-gray-200" htmlFor="passwordConfirmation">
                     Confirm Password
                 </Label>
 
@@ -94,7 +94,7 @@ const Page = () => {
                     id="passwordConfirmation"
                     type="password"
                     value={passwordConfirmation}
-                    className="block mt-1 w-full"
+                    className="block mt-1 w-full dark:bg-slate-800 px-2 py-1"
                     onChange={event =>
                         setPasswordConfirmation(event.target.value)
                     }
@@ -110,7 +110,7 @@ const Page = () => {
             <div className="flex items-center justify-end mt-4">
                 <Link
                     href="/login"
-                    className="underline text-sm text-gray-600 hover:text-gray-900">
+                    className="underline text-sm text-gray-600 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-100">
                     Already registered?
                 </Link>
 

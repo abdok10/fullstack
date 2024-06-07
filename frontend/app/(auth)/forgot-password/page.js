@@ -26,7 +26,7 @@ const Page = () => {
 
     return (
         <>
-            <div className="mb-4 text-sm text-gray-600">
+            <div className="mb-4 text-sm text-gray-600 dark:text-gray-200">
                 Forgot your password? No problem. Just let us know your email
                 address and we will email you a password reset link that
                 will allow you to choose a new one.
@@ -38,13 +38,13 @@ const Page = () => {
             <form onSubmit={submitForm}>
                 {/* Email Address */}
                 <div>
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email" className={'dark:text-gray-200'}>Email</Label>
                     <Input
                         id="email"
                         type="email"
                         name="email"
                         value={email}
-                        className="block mt-1 w-full"
+                        className="block mt-1 w-full dark:bg-slate-800 px-2 py-1"
                         onChange={event => setEmail(event.target.value)}
                         required
                         autoFocus

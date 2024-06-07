@@ -17,6 +17,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import toast from "react-hot-toast";
+import Header from "@/components/Header";
+import { useMutation } from "@tanstack/react-query";
 
 const formSchema = z.object({
     name: z.string({message: "Name is required"}).min(3),
@@ -33,14 +35,29 @@ function LandingPage() {
         formState: { isSubmitting },
     } = form;
 
-    const onSubmit = async (data) => {
-        console.log(data);
-        await axiosClient.post('/contact', data);
-        toast.success("Form submitted successfully");
+    const onSubmit = (data) => {
+        // await axios.post('/api/contact', data);
+        sendEmail(data)
+        console.log(data)
+        // toast.success("Form submitted successfully");
     };
+    
+      const { mutate: sendEmail, isPending: isLoadingSubmit } = useMutation({
+        mutationFn: async (data) => {
+          const response = await axios.post("/api/contact", data);
+          return response.data;
+        },
+        onSuccess: () => {
+            toast.success("Form submitted successfully");
+        },
+        onError: (error) => {
+          console.error(error)
+        },
+      })
 
     return (
         <>
+        <Header />
             <section className="h-full w-full md:pt-44 mt-[-70px] relative flex items-center justify-center flex-col">
                 <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#161616_1px,transparent_1px),linear-gradient(to_bottom,#161616_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] -z-10" />
 
