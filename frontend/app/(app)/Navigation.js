@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
 import { ModeToggle } from "@/components/mode-toggle";
+import { CircleUserRound, LogOut, UserRound } from "lucide-react";
 
 const Navigation = ({ user }) => {
     const { logout } = useAuth();
@@ -25,7 +26,7 @@ const Navigation = ({ user }) => {
                     <div className="flex">
                         {/* Logo */}
                         <div className="flex-shrink-0 flex items-center">
-                            <Link href="/dashboard">
+                            <Link href="/">
                                 <Image
                                     src={"./plura-logo.svg"}
                                     width={40}
@@ -73,10 +74,18 @@ const Navigation = ({ user }) => {
                         >
                             {/* Authentication */}
                             <Link href={"/dashboard/account"}>
-                                <DropdownButton>Account</DropdownButton>
+                                <DropdownButton>
+                                    <div className="flex gap-3">
+                                        <UserRound />
+                                        Account
+                                    </div>
+                                </DropdownButton>
                             </Link>
                             <DropdownButton onClick={logout}>
-                                Logout
+                                <div className="flex gap-3">
+                                    <LogOut />
+                                    Logout
+                                </div>
                             </DropdownButton>
                         </Dropdown>
                         <ModeToggle />

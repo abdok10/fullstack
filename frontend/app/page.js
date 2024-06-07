@@ -42,7 +42,7 @@ function LandingPage() {
         // toast.success("Form submitted successfully");
     };
     
-      const { mutate: sendEmail, isPending: isLoadingSubmit } = useMutation({
+      const { mutate: sendEmail, isSuccess: isLoadingSubmit } = useMutation({
         mutationFn: async (data) => {
           const response = await axios.post("/api/contact", data);
           return response.data;
@@ -151,7 +151,7 @@ function LandingPage() {
                         disabled={isSubmitting}
                         type="submit"
                     >
-                        {isSubmitting && (
+                        {!isSubmitting && (
                             <Loader className={"mx-2 my-2 animate-spin"} />
                         )}{" "}
                         Submit
