@@ -1,4 +1,3 @@
-import ApplicationLogo from "@/components/ApplicationLogo";
 import Dropdown from "@/components/Dropdown";
 import Link from "next/link";
 import NavLink from "@/components/NavLink";
@@ -11,7 +10,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
 import { ModeToggle } from "@/components/mode-toggle";
-import { CircleUserRound, LogOut, UserRound } from "lucide-react";
+import { LogOut, UserRound } from "lucide-react";
 
 const Navigation = ({ user }) => {
     const { logout } = useAuth();
@@ -74,8 +73,8 @@ const Navigation = ({ user }) => {
                         >
                             {/* Authentication */}
                             <Link href={"/dashboard/account"}>
-                                <DropdownButton>
-                                    <div className="flex gap-3">
+                                <DropdownButton className="">
+                                    <div className="flex gap-3 dark:text-gray-900">
                                         <UserRound />
                                         Account
                                     </div>

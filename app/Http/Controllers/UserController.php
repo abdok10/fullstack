@@ -33,26 +33,15 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        // Validate the incoming request data
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'userType' => 'required|in:volunteer,beneficiary',
-            'adresse' => 'required|string',
-            'phone' => 'required',  
-            'email' => 'required|email|unique:users,email',
-            'password' => 'string|min:6',
-        ]);
-
-        // If validation fails, return error response
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        }
 
         // Create a new user with the validated data
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
+            'adresse' => $request->input('adresse'),
+            'userType' => $request->input('userType'),
+            'phone' => $request->input('phone'),
         ]);
 
         // Return success response with the created user data
@@ -61,20 +50,6 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Validate the incoming request data
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'userType' => 'required|in:volunteer,beneficiary',
-            'adresse' => 'required|string',
-            'phone' => 'required',  
-            'email' => 'required|email|unique:users,email',
-            'password' => 'string|min:6',
-        ]);
-
-        // If validation fails, return error response
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        }
 
         // Find the user by ID
         $user = User::find($id);

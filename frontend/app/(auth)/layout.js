@@ -1,8 +1,8 @@
 import Link from "next/link";
 import AuthCard from "@/app/(auth)/AuthCard";
-import ApplicationLogo from "@/components/ApplicationLogo";
-import Header from "@/components/Header";
 import Image from "next/image";
+import "../global.css"
+import HeaderAuth from './../../components/HeaderAuth';
 
 export const metadata = {
     title: "Laravel",
@@ -10,8 +10,8 @@ export const metadata = {
 
 const Layout = ({ children }) => {
     return (
-        <div>
-            <Header />
+        <div className="">
+            <HeaderAuth />
             <div className="font-sans text-gray-900 dark:text-gray-200 antialiased">
                 <AuthCard
                     logo={

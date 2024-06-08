@@ -1,52 +1,96 @@
+'use client'
+
 import { ModeToggle } from "@/components/mode-toggle";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { NavbarLinks } from './../constants/index';
+import {
+    Sheet,
+    SheetContent,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet"
+import { Menu } from "lucide-react";
 
 function Header() {
     return (
-        <div className="fixed top-0 right-0 left-0 p-4 flex items-center justify-between z-10">
-            <Link href={"/"} className="flex items-center gap-2">
-                <img
-                    src={"./plura-logo.svg"}
-                    width={40}
-                    height={40}
-                    alt="plura logo"
-                />
-                <span className="text-xl font-bold"> TeamBuilder.</span>
-            </Link>
-            <nav className="hidden md:block absolute left-[50%] top-[50%] transform translate-x-[-50%] translate-y-[-50%]">
-                <ul className="flex items-center justify-center gap-8">
-                    <Link
-                        href={"/"}
-                        className="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-blue-500"
-                        aria-current="page"
-                    >
-                        Home
-                    </Link>
-                    <Link
-                        href={'/dashboard'}
-                        className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                    >
-                        Dashboard
-                    </Link>
+        <nav className="fixed top-0 right-0 left-0 p-4 flex items-center justify-between z-10 backdrop-blur-3xl">
+            <div className="hidden md:flex gap-[80px]">
+                <Link href={"/"} className="flex items-center gap-2">
+                    <img
+                        src={"./plura-logo.svg"}
+                        width={40}
+                        height={40}
+                        alt="plura logo"
+                    />
+                    <span className="text-xl font-bold"> Serve <span className="text-[#3572EF]">Together.</span></span>
+                </Link>
+                <ul className="flex items-center gap-[40px]">
+                    {
+                        NavbarLinks.map((item) => {
+                            const { id, route, link } = item
+                            return (
+                                <li className="text-muted-foreground text-[16px]" key={id}>
+                                    <Link
+                                        href={route}
+                                    >
+                                        { link }
+                                    </Link>
+                                </li>
+                            )
+                        })
+                    }
                 </ul>
-            </nav>
-            <aside className="flex gap-2 items-center">
-                <Link
-                    href={'/login'}
-                    className="bg-primary text-white p-2 px-4 rounded-md hover:bg-primary/80"
-                >
-                    Login
-                </Link>
-                <Link
-                    href={'/register'}
-                    className="bg-primary text-white p-2 px-4 rounded-md hover:bg-primary/80"
-                >
-                    Register
-                </Link>
-                
+            </div>
+
+            {/* Mobile Navbar */}
+            <div className="block md:hidden">
+                <Sheet className="block md:hidden">
+                    <SheetTrigger>
+                        <Menu className="w-5 h-5 object-contain" />
+                    </SheetTrigger>
+                    <SheetContent>
+                        <SheetHeader>
+                        <SheetTitle>
+                            <Link href={"/"} className="flex items-center gap-2">
+                                <img
+                                    src={"./plura-logo.svg"}
+                                    width={40}
+                                    height={40}
+                                    alt="plura logo"
+                                />
+                                <span className="text-xl font-bold"> Serve <span className="text-[#3572EF]">Together .</span></span>
+                            </Link>
+                        </SheetTitle>
+                        </SheetHeader>
+                        <div className="flex flex-col items-center h-full">
+                            <ul className="flex flex-col items-center justify-center gap-[10px]">
+                                {
+                                    NavbarLinks.map((item) => {
+                                        const { id, route, link } = item
+                                        return (
+                                            <li className="text-[17px]" key={id}>
+                                                <Link
+                                                    href={route}
+                                                >
+                                                    { link }
+                                                </Link>
+                                            </li>
+                                        )
+                                    })
+                                }
+                            </ul>
+                            <ModeToggle />
+                        </div>
+                    </SheetContent>
+                </Sheet>
+
+            </div>
+            <div className="flex gap-2 items-center">
                 <ModeToggle />
-            </aside>
-        </div>
+            </div>
+        </nav>
     );
 }
 export default Header;
