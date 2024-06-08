@@ -13,9 +13,9 @@ class Beneficiary extends Model
 
     protected $fillable = [
         'name',
-        'type',
+        'userType',
         'adresse',
-        'description',
+        'phone',
         'email',
         'password',
     ];

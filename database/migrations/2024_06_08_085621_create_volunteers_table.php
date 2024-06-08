@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('volunteers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('type', ['association', 'individual']);
-            $table->text('description');
+            $table->enum('userType', ['volunteer', 'beneficiary']);
             $table->string('adresse');
-            $table->string('email')->unique()->nullable();
+            $table->string('phone', 15)->nullable();
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable();
+            $table->string('password');
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

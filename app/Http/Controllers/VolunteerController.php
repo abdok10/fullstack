@@ -26,12 +26,12 @@ class VolunteerController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'type' => 'required|in:association,individual',
-            'description' => 'required|string',
+            'name' => 'required|string',
+            'userType' => 'required|in:volunteer,beneficiary',
             'adresse' => 'required|string',
-            'email' => 'nullable|email|unique:volunteers,email',
-            'password' => 'nullable|string|min:6',
+            'phone' => 'required',  
+            'email' => 'required|email|unique:volunteers,email',
+            'password' => 'string|min:6',
         ]);
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
@@ -47,11 +47,12 @@ class VolunteerController extends Controller
             return response()->json(['error' => 'Volunteer not found'], 404);
         }
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'type' => 'required|in:association,individual',
-            'description' => 'required|string',
+            'name' => 'required|string',
+            'userType' => 'required|in:volunteer,beneficiary',
             'adresse' => 'required|string',
-            'email' => 'nullable|email|unique:volunteers,email,' . $id,
+            'phone' => 'required',  
+            'email' => 'required|email|unique:volunteers,email',
+            'password' => 'string|min:6',
         ]);
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);

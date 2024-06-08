@@ -31,16 +31,15 @@ class DonationController extends Controller
         return response()->json(['donation' => $donation], 200);
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
         // Validate the incoming request data
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'type' => 'required|in:money,food,clothes,books,toys,other',
-            'status' => 'nullable|in:pending,accepted,rejected',
-            'volunteer_id' => 'required|exists:volunteers,id',
-            'beneficiary_id' => 'required|exists:beneficiaries,id',
+            'type' => 'required|in:money,food,clothes,other',
+            'status' => 'in:pending,accepted,rejected',
+            'user_id' => 'required|exists:users,id',
         ]);
 
         // If validation fails, return error response
@@ -69,10 +68,9 @@ class DonationController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'type' => 'required|in:money,food,clothes,books,toys,other',
-            'status' => 'nullable|in:pending,accepted,rejected',
-            'volunteer_id' => 'required|exists:volunteers,id',
-            'beneficiary_id' => 'required|exists:beneficiaries,id',
+            'type' => 'required|in:money,food,clothes,other',
+            'status' => 'in:pending,accepted,rejected',
+            'user_id' => 'required|exists:users,id',
         ]);
 
         // If validation fails, return error response
@@ -87,7 +85,7 @@ class DonationController extends Controller
         return response()->json(['donation' => $donation], 200);
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         // Find the donation by ID
         $donation = Donation::find($id);

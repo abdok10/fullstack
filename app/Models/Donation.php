@@ -2,8 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Volunteer;
-use App\Models\Beneficiary;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,17 +16,11 @@ class Donation extends Model
         'description',
         'type',
         'status',
-        'beneficiary_id',   
-        'volunteer_id',
+        'user_id'
     ];
 
-    public function volunteer()
+    public function user()
     {
-        return $this->belongsTo(Volunteer::class);
-    }
-
-    public function beneficiary()
-    {
-        return $this->belongsTo(Beneficiary::class);
+        return $this->belongsTo(User::class);
     }
 }

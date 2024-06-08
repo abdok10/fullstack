@@ -35,9 +35,12 @@ class UserController extends Controller
     {
         // Validate the incoming request data
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string',
+            'userType' => 'required|in:volunteer,beneficiary',
+            'adresse' => 'required|string',
+            'phone' => 'required',  
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6',
+            'password' => 'string|min:6',
         ]);
 
         // If validation fails, return error response
@@ -60,8 +63,12 @@ class UserController extends Controller
     {
         // Validate the incoming request data
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $id,
+            'name' => 'required|string',
+            'userType' => 'required|in:volunteer,beneficiary',
+            'adresse' => 'required|string',
+            'phone' => 'required',  
+            'email' => 'required|email|unique:users,email',
+            'password' => 'string|min:6',
         ]);
 
         // If validation fails, return error response

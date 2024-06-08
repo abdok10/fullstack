@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->enum('type', ['money', 'food', 'clothes', 'other']);
-            $table->enum('status', ['pending', 'accepted', 'rejected'])->nullable();
+            $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
             
-            $table->foreignId('volunteer_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });
