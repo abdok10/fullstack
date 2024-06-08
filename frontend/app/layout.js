@@ -9,7 +9,7 @@ export const metadata = {
 const RootLayout = ({ children }) => {
     return (
         <html lang="en">
-            <body className="antialiased">
+            <body className="bg-red-200">
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"

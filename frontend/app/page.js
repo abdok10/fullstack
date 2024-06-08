@@ -151,7 +151,7 @@ function LandingPage() {
                         disabled={isSubmitting}
                         type="submit"
                     >
-                        {!isSubmitting && (
+                        {isSubmitting && (
                             <Loader className={"mx-2 my-2 animate-spin"} />
                         )}{" "}
                         Submit
