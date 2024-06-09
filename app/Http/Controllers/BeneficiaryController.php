@@ -46,6 +46,7 @@ class BeneficiaryController extends Controller
         if (!$beneficiary) {
             return response()->json(['error' => 'Beneficiary not found'], 404);
         }
+        
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'userType' => 'required|in:volunteer,beneficiary',
